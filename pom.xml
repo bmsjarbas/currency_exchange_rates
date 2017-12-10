@@ -5,17 +5,80 @@
   <artifactId>currency-exchange-rates</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>currency-exchange-rates Maven Webapp</name>
+  <name>currency-exchange-rates</name>
   <url>http://maven.apache.org</url>
+
+    <properties>
+        <java-version>1.8</java-version>
+        <spring.version>5.0.0.RELEASE</spring.version>
+        <sprint-security.version>5.0.0.RELEASE</sprint-security.version>
+        <junit.version>4.12</junit.version>
+        <assertj-core-version>3.8.0</assertj-core-version>
+        <mockito.version>2.13.0</mockito.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+    </properties>
   <dependencies>
+
+
+    <!-- Test dependencies -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
+
+      <dependency>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-core</artifactId>
+          <version>${mockito.version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.assertj</groupId>
+          <artifactId>assertj-core</artifactId>
+          <version>${assertj-core-version}</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-test</artifactId>
+          <version>${spring.version}</version>
+          <scope>test</scope>
+      </dependency>
+
+
+      <!-- Spring MVC related dependencies -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-webmvc</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+      <!-- Security -->
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-config</artifactId>
+          <version>${sprint-security.version}</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-web</artifactId>
+          <version>${sprint-security.version}</version>
+      </dependency>
+
   </dependencies>
+
   <build>
     <finalName>currency-exchange-rates</finalName>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.tomcat.maven</groupId>
+              <artifactId>tomcat7-maven-plugin</artifactId>
+              <version>${tomcat7-maven-plugin.version}</version>
+              <configuration>
+                  <path>/</path>
+              </configuration>
+          </plugin>
+      </plugins>
   </build>
 </project>
