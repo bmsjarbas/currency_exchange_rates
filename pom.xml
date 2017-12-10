@@ -16,6 +16,8 @@
         <assertj-core-version>3.8.0</assertj-core-version>
         <mockito.version>2.13.0</mockito.version>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+        <javax-servlet-api.version>4.0.0</javax-servlet-api.version>
+        <jstl.version>1.2</jstl.version>
     </properties>
   <dependencies>
 
@@ -64,6 +66,21 @@
           <groupId>org.springframework.security</groupId>
           <artifactId>spring-security-web</artifactId>
           <version>${sprint-security.version}</version>
+      </dependency>
+
+
+      <!--Servlet dependencies -->
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>javax.servlet-api</artifactId>
+          <version>${javax-servlet-api.version}</version>
+          <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+          <version>${jstl.version}</version>
       </dependency>
 
   </dependencies>
