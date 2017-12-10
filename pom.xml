@@ -10,14 +10,16 @@
 
     <properties>
         <java-version>1.8</java-version>
-        <spring.version>5.0.0.RELEASE</spring.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
         <sprint-security.version>5.0.0.RELEASE</sprint-security.version>
         <junit.version>4.12</junit.version>
         <assertj-core-version>3.8.0</assertj-core-version>
         <mockito.version>2.13.0</mockito.version>
+        <h2.version>1.4.196</h2.version>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
         <javax-servlet-api.version>4.0.0</javax-servlet-api.version>
         <jstl.version>1.2</jstl.version>
+        <hibernate.version>5.2.12.Final</hibernate.version>
     </properties>
   <dependencies>
 
@@ -46,6 +48,13 @@
           <groupId>org.springframework</groupId>
           <artifactId>spring-test</artifactId>
           <version>${spring.version}</version>
+          <scope>test</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>com.h2database</groupId>
+          <artifactId>h2</artifactId>
+          <version>${h2.version}</version>
           <scope>test</scope>
       </dependency>
 
@@ -82,6 +91,20 @@
           <artifactId>jstl</artifactId>
           <version>${jstl.version}</version>
       </dependency>
+
+      <!-- ORM related dependencies -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-orm</artifactId>
+          <version>${spring.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-core</artifactId>
+          <version>${hibernate.version}</version>
+      </dependency>
+
 
   </dependencies>
 

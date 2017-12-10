@@ -61,6 +61,8 @@
                 <form:errors path="country"></form:errors>
             </div>
         </spring:bind>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
     </form:form>
 </div>
 </body>

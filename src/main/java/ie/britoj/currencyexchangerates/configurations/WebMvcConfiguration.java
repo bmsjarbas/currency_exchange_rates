@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"ie.britoj.currencyexchangerates.web.controllers"})
+@ComponentScan(basePackages = {"ie.britoj.currencyexchangerates"})
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     @Override

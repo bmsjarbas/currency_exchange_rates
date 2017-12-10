@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class SignUpControllerTests {
+public class SignUpControllerTest {
     private MockMvc mockMvc;
     @InjectMocks
     private SignUpController signUpController;
