@@ -79,5 +79,12 @@ public class UserDAOTest {
         assertThat(userFromDb).isNull();
     }
 
+    @Test
+    public void findByEmailTest(){
+        User userFromDb = userDAO.findByEmail(user.getEmail());
+        assertThat(userFromDb).isNotNull();
+        assertThat(userFromDb.getId()).isGreaterThan(0);
+    }
+
 
 }
