@@ -18,7 +18,6 @@ import java.util.Date;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebMvcConfiguration.class})
 @Transactional

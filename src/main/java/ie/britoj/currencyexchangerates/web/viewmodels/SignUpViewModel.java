@@ -1,5 +1,8 @@
 package ie.britoj.currencyexchangerates.web.viewmodels;
 
+import ie.britoj.currencyexchangerates.models.Address;
+import ie.britoj.currencyexchangerates.models.User;
+
 import java.util.Date;
 
 public class SignUpViewModel {
@@ -71,4 +74,9 @@ public class SignUpViewModel {
     public String getConfirmPassword() { return confirmPassword; }
 
     public void setConfirmPassword(String confirmPassword) { this.confirmPassword = confirmPassword; }
+
+    public User createUser() {
+        Address address = new Address(this.streetAddress, this.zipCode, this.city, this.country);
+        return new User(this.email, this.password, this.dateOfBirth, address);
+    }
 }
