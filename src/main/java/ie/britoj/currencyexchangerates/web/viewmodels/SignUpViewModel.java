@@ -2,6 +2,7 @@ package ie.britoj.currencyexchangerates.web.viewmodels;
 
 import ie.britoj.currencyexchangerates.models.Address;
 import ie.britoj.currencyexchangerates.models.User;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -9,6 +10,7 @@ public class SignUpViewModel {
     private String email;
     private String password;
     private String confirmPassword;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth;
     private String streetAddress;
     private String zipCode;

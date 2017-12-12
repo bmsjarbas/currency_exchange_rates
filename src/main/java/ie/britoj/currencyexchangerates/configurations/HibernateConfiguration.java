@@ -18,14 +18,14 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"ie.britoj.currencyexchangerates.configurations"})
-@PropertySource(value = { "classpath:application.properties" })
+@PropertySource(value = {"classpath:application.properties"})
 public class HibernateConfiguration {
 
     @Autowired
     Environment environment;
 
     @Bean
-    public LocalSessionFactoryBean localSessionFactory(){
+    public LocalSessionFactoryBean localSessionFactory() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setPackagesToScan(new String[]{"ie.britoj.currencyexchangerates.models"});
@@ -38,12 +38,16 @@ public class HibernateConfiguration {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
         driverManagerDataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
         driverManagerDataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+        driverManagerDataSource.setUsername(environment.getProperty("jdbc.username"));
+        driverManagerDataSource.setPassword(environment.getProperty("jdbc.password"));
+
+
         return driverManagerDataSource;
     }
 
     @Bean
     @Autowired
-    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory){
+    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
         HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
         hibernateTransactionManager.setSessionFactory(sessionFactory);
         return hibernateTransactionManager;
@@ -55,7 +59,7 @@ public class HibernateConfiguration {
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
         String createDDL = environment.getProperty("hibernate.hbm2ddl.auto");
-        if(createDDL.equals("create")){
+        if (createDDL.equals("create")) {
             properties.put("hibernate.hbm2ddl.auto", createDDL);
         }
         return properties;

@@ -11,23 +11,23 @@
 
 <body>
 <div class="container">
-    <form:form action="${signUpUrl}" modelAttribute="signUp" method="post">
+    <form:form action="/signup" modelAttribute="signup" method="POST">
         <h2>Create your account</h2>
         <spring:bind path="email">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input path="email" cssClass="form-control" placeholder="" autofocus="true"></form:input>
+                <form:input type="text" path="email" cssClass="form-control" placeholder="" autofocus="true"></form:input>
                 <form:errors path="email"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="password">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input path="password" cssClass="form-control" placeholder=""></form:input>
+                <form:input type="password" path="password" cssClass="form-control" placeholder=""></form:input>
                 <form:errors path="password"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="confirmPassword">
             <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input path="confirmPassword" cssClass="form-control" placeholder="" ></form:input>
+                <form:input type="password" path="confirmPassword" cssClass="form-control" placeholder="" ></form:input>
                 <form:errors path="confirmPassword"></form:errors>
             </div>
         </spring:bind>
@@ -61,9 +61,10 @@
                 <form:errors path="country"></form:errors>
             </div>
         </spring:bind>
-
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
     </form:form>
+
 </div>
 </body>
 

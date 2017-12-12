@@ -53,7 +53,7 @@ public class SignUpControllerTest {
                 .andExpect(status().isOk()).andReturn();
         ModelAndView modelAndView = result.getModelAndView();
         assertThat(modelAndView.getViewName()).isEqualTo("signUpForm");
-        assertThat(modelAndView.getModel().get("signUp").getClass()).isEqualTo(SignUpViewModel.class);
+        assertThat(modelAndView.getModel().get("signup").getClass()).isEqualTo(SignUpViewModel.class);
     }
 
     @Test
@@ -61,22 +61,11 @@ public class SignUpControllerTest {
         SignUpViewModel signUpViewModel = createValidSignUpViewModel();
 
         MvcResult result = mockMvc.perform(post("/signup")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(asJsonString(signUpViewModel)))
+                .flashAttr("signup", signUpViewModel))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/signup/confirmation")).
                         andReturn();
 
-
-
-    }
-
-    private String asJsonString(final Object obj) {
-        try {
-            return new ObjectMapper().writeValueAsString(obj);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private SignUpViewModel createValidSignUpViewModel(){
