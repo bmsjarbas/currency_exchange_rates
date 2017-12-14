@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -70,12 +71,14 @@ public class SignUpControllerTest {
 
     private SignUpViewModel createValidSignUpViewModel(){
         SignUpViewModel signUpViewModel = new SignUpViewModel();
-        signUpViewModel.setEmail("some_email_register@some_email_provider@gmail.com");
-        signUpViewModel.setPassword("some_string_password");
-        signUpViewModel.setDateOfBirth(new Date(19870805));
-        signUpViewModel.setStreetAddress("some_street_address");
-        signUpViewModel.setCity("some_city_name");
-        signUpViewModel.setCountry("some_country_name");
+        signUpViewModel.setEmail("some_email@gmail.com");
+        signUpViewModel.setPassword("Password@123");
+        signUpViewModel.setConfirmPassword("Password@123");
+        signUpViewModel.setDateOfBirth(LocalDate.of(1987, 8, 5));
+        signUpViewModel.setStreetAddress("Test Street Name");
+        signUpViewModel.setCity("Test city name");
+        signUpViewModel.setCountry("Test country name");
+        signUpViewModel.setZipCode("123456");
         return signUpViewModel;
 
     }

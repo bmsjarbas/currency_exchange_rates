@@ -16,7 +16,7 @@ public class UserDAO extends GenericDAO <User>{
         Root<User> rootUser = criteriaQuery.from(User.class);
         criteriaQuery.where(criteriaBuilder.equal(rootUser.get("email"), email));
         Query<User> queryUser = this.getQuery(criteriaQuery);
-        User user = queryUser.getSingleResult();
+        User user = queryUser.uniqueResult();
         return user;
     }
 }

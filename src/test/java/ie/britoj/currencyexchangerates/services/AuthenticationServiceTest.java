@@ -15,6 +15,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,7 +37,7 @@ public class AuthenticationServiceTest {
     @Before
     public void setUp(){
         Address address = new Address("Some street name", "someZipCode", "someCity", "someCountry");
-        this.user = new User("email_test@email_provider.com", "asd", new Date(), address);
+        this.user = new User("email_test@email_provider.com", "asd", LocalDate.now(), address);
         userDAO.create(user);
     }
 

@@ -1,6 +1,7 @@
 package ie.britoj.currencyexchangerates.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -11,14 +12,14 @@ public class User {
 
     private String email;
     private String password;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private Address address;
 
     public User(){
 
     }
 
-    public User(String email, String password, Date dateOfBirth, Address address) {
+    public User(String email, String password, LocalDate dateOfBirth, Address address) {
         this.address = address;
         this.email = email;
         this.password = password;
@@ -49,11 +50,11 @@ public class User {
         this.id = id;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

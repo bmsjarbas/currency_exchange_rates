@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,7 +33,7 @@ public class UserDAOTest {
     @Before
     public void setUp(){
         Address address = new Address("Some street name", "someZipCode", "someCity", "someCountry");
-        this.user = new User("email_test@email_provider.com", "asd", new Date(), address);
+        this.user = new User("email_test@email_provider.com", "asd", LocalDate.now(), address);
         userDAO.create(user);
     }
 

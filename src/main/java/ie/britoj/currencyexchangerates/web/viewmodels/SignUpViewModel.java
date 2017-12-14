@@ -4,6 +4,7 @@ import ie.britoj.currencyexchangerates.models.Address;
 import ie.britoj.currencyexchangerates.models.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class SignUpViewModel {
@@ -11,7 +12,7 @@ public class SignUpViewModel {
     private String password;
     private String confirmPassword;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String streetAddress;
     private String zipCode;
     private String city;
@@ -49,11 +50,11 @@ public class SignUpViewModel {
         this.streetAddress = streetAddress;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

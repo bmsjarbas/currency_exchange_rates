@@ -22,51 +22,51 @@
     <form:form action="/signup" modelAttribute="signup" method="POST" class="form-signup">
         <h2 class="form-signup-heading">Create your account</h2>
         <spring:bind path="email">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input type="text" path="email" cssClass="form-control" placeholder="Email" autofocus="true"></form:input>
-                <form:errors path="email"></form:errors>
+                <form:errors path="email" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input type="password" path="password" cssClass="form-control" placeholder="Password"></form:input>
-                <form:errors path="password"></form:errors>
+                <form:errors path="password" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="confirmPassword">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input type="password" path="confirmPassword" cssClass="form-control" placeholder="Confirm password" ></form:input>
-                <form:errors path="confirmPassword"></form:errors>
+                <form:errors path="confirmPassword" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="dateOfBirth">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input path="dateOfBirth" cssClass="form-control" placeholder="Date of birth" ></form:input>
-                <form:errors path="dateOfBirth"></form:errors>
+                <form:errors path="dateOfBirth" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="streetAddress">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input path="streetAddress" cssClass="form-control" placeholder="Stree address"></form:input>
-                <form:errors path="streetAddress"></form:errors>
+                <form:errors path="streetAddress" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="zipCode">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input path="zipCode" cssClass="form-control" placeholder="Zip code"></form:input>
-                <form:errors path="zipCode"></form:errors>
+                <form:errors path="zipCode" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="city">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input path="city" cssClass="form-control" placeholder="City"></form:input>
-                <form:errors path="city"></form:errors>
+                <form:errors path="city" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <spring:bind path="country">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
+            <div class="form-group">
                 <form:input path="country" cssClass="form-control" placeholder="Country"></form:input>
-                <form:errors path="country"></form:errors>
+                <form:errors path="country" cssClass="has-error"></form:errors>
             </div>
         </spring:bind>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
