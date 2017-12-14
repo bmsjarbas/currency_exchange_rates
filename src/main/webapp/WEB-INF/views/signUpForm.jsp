@@ -19,7 +19,7 @@
 
 <body>
 <div class="container">
-    <form:form action="/signup" modelAttribute="signup" method="POST" class="form-signup">
+    <form:form action="/signup" modelAttribute="signUp" method="POST" class="form-signup">
         <h2 class="form-signup-heading">Create your account</h2>
         <spring:bind path="email">
             <div class="form-group">

@@ -25,13 +25,13 @@ public class SignUpController {
     SignUpValidator signUpValidator;
 
     @GetMapping()
-    public ModelAndView index(){
+    public ModelAndView getSignUp(){
         SignUpViewModel signUpViewModel = new SignUpViewModel();
-        return new ModelAndView("signUpForm", "signup", signUpViewModel);
+        return new ModelAndView("signUpForm", "signUp", signUpViewModel);
     }
 
     @PostMapping
-    public String create(@ModelAttribute("signup") SignUpViewModel signUp, BindingResult bindingResult
+    public String postSignUp(@ModelAttribute("signUp") SignUpViewModel signUp, BindingResult bindingResult
     ){
 
         signUpValidator.validate(signUp, bindingResult);
@@ -44,9 +44,8 @@ public class SignUpController {
 
     }
 
-
     @GetMapping("/confirmation")
-    public String confirmation(){
+    public String getConfirmation(){
         return "signupConfirmation";
     }
 }
