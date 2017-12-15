@@ -23,9 +23,10 @@
         <jackson-databind.version>2.9.3</jackson-databind.version>
         <webjars-locator.version>0.32-1</webjars-locator.version>
         <jquery.version>3.2.1</jquery.version>
-        <bootstrap.version>4.0.0-beta.2</bootstrap.version>
+        <bootstrap.version>3.3.7-1</bootstrap.version>
         <font-awesome.version>4.7.0</font-awesome.version>
         <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+        <bootstrap-datepicker.version>1.7.1</bootstrap-datepicker.version>
     </properties>
   <dependencies>
 
@@ -149,6 +150,18 @@
           <groupId>org.webjars</groupId>
           <artifactId>font-awesome</artifactId>
           <version>${font-awesome.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.webjars</groupId>
+          <artifactId>bootstrap-datepicker</artifactId>
+          <version>${bootstrap-datepicker.version}</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.webjars</groupId>
+                  <artifactId>bootstrap</artifactId>
+              </exclusion>
+          </exclusions>
       </dependency>
 
       <dependency>
