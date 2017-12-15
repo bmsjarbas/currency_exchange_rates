@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -27,7 +28,7 @@ import java.util.Date;
 public class AuthenticationServiceTest {
 
     @Autowired
-    AuthenticationService authenticationService;
+    UserDetailsService authenticationService;
 
     @Autowired
     UserDAO userDAO;

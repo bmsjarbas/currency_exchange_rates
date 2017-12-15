@@ -1,9 +1,11 @@
 package ie.britoj.currencyexchangerates.configurations;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.concurrent.TimeUnit;
@@ -19,5 +21,11 @@ public class WebConfigurer implements WebMvcConfigurer {
                 .setCacheControl(
                 CacheControl.maxAge(30L, TimeUnit.DAYS).cachePublic());
 
+    }
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/signin").setViewName("signin-form");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 }

@@ -10,6 +10,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.ParameterizedType;
 import org.hibernate.query.Query;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public abstract class GenericDAO<T> implements DAO<T>  {

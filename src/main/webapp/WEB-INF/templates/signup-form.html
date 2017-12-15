@@ -1,0 +1,55 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head th:include="layout :: header"></head>
+<body>
+<div class="container">
+
+    <form   th:action="@{/signup}"  th:object="${signUp}" method="post" class="form-signup">
+        <h2 class="form-signup-heading">Create your account</h2>
+            <div class="form-group">
+                <input type="text"  th:field="*{email}" class="form-control" placeholder="Email"
+                       autofocus="true" th:errorclass="input-error"/>
+                <p class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            </div>
+            <div class="form-group">
+                <input type="password" th:field="*{password}" th:errorclass="input-error" class="form-control" placeholder="Password"></input>
+                <p class="error-message" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+            </div>
+            <div class="form-group">
+                <input type="password" th:field="*{confirmPassword}" th:errorclass="input-error" class="form-control" placeholder="Confirm password" ></input>
+                <p class="error-message" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
+
+            </div>
+            <div class="form-group">
+                <input th:field="*{dateOfBirth}" th:errorclass="input-error" class="form-control" placeholder="Date of birth" ></input>
+                <p class="error-message" th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"></p>
+
+            </div>
+            <div class="form-group">
+                <input th:field="*{streetAddress}" th:errorclass="input-error" class="form-control" placeholder="Stree address"></input>
+                <p class="error-message" th:if="${#fields.hasErrors('streetAddress')}" th:errors="*{streetAddress}"></p>
+
+            </div>
+            <div class="form-group">
+                <input th:field="*{zipCode}" th:errorclass="input-error" class="form-control" placeholder="Zip code"></input>
+                <p class="error-message" th:if="${#fields.hasErrors('zipCode')}" th:errors="*{zipCode}"></p>
+
+            </div>
+            <div class="form-group">
+                <input th:field="*{city}" th:errorclass="input-error" class="form-control" placeholder="City"></input>
+                <p class="error-message" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+
+            </div>
+
+            <div class="form-group">
+                <input th:field="*{country}" th:errorclass="input-error" class="form-control" placeholder="Country"></input>
+                <p class="error-message" th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></p>
+            </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
+    </form>
+
+</div>
+</body>
+
+</html>

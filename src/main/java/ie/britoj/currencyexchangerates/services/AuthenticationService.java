@@ -19,7 +19,7 @@ public class AuthenticationService implements UserDetailsService {
 
     @Autowired
     UserDAO userDAO;
-
+    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userDAO.findByEmail(email);
         if(user == null){

@@ -2,6 +2,7 @@ package ie.britoj.currencyexchangerates.web.controllers;
 
 import ie.britoj.currencyexchangerates.services.UserManager;
 import ie.britoj.currencyexchangerates.web.validators.SignUpValidator;
+import ie.britoj.currencyexchangerates.web.viewmodels.SignInViewModel;
 import ie.britoj.currencyexchangerates.web.viewmodels.SignUpViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +28,7 @@ public class SignUpController {
     @GetMapping()
     public ModelAndView getSignUp(){
         SignUpViewModel signUpViewModel = new SignUpViewModel();
-        return new ModelAndView("signUpForm", "signUp", signUpViewModel);
+        return new ModelAndView("signup-form", "signUp", signUpViewModel);
     }
 
     @PostMapping
@@ -36,7 +37,7 @@ public class SignUpController {
 
         signUpValidator.validate(signUp, bindingResult);
         if(bindingResult.hasErrors()){
-            return "signUpForm";
+            return "signup-form";
         }
 
         userManager.create(signUp.createUser());
@@ -46,6 +47,6 @@ public class SignUpController {
 
     @GetMapping("/confirmation")
     public String getConfirmation(){
-        return "signupConfirmation";
+        return "signup-confirmation";
     }
 }

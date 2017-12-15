@@ -43,6 +43,10 @@ body {
     margin-top: 10px;
 }
 
-.has-error {
-    color: red
+.input-error{
+    border:1px solid red;
+}
+
+.error-message {
+    color: red;
 }

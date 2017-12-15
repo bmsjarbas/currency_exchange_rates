@@ -53,7 +53,7 @@ public class SignUpControllerTest {
         MvcResult result = mockMvc.perform(get("/signup"))
                 .andExpect(status().isOk()).andReturn();
         ModelAndView modelAndView = result.getModelAndView();
-        assertThat(modelAndView.getViewName()).isEqualTo("signUpForm");
+        assertThat(modelAndView.getViewName()).isEqualTo("signup-form");
         assertThat(modelAndView.getModel().get("signUp").getClass()).isEqualTo(SignUpViewModel.class);
     }
 
