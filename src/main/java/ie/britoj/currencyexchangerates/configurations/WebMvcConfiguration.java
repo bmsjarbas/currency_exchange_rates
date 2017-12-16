@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -91,6 +92,10 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport implements A
         messageSource.setBasenames("classpath:messages");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
+    }
+    @Bean
+    public RestTemplate getRestTemplate(){
+        return  new RestTemplate();
     }
 
 

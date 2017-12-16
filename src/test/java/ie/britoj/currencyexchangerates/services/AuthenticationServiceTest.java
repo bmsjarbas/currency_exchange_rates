@@ -14,13 +14,13 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
-import java.util.Date;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
-
 @WebAppConfiguration
 @ContextConfiguration(classes = {WebMvcConfiguration.class})
 @Transactional
