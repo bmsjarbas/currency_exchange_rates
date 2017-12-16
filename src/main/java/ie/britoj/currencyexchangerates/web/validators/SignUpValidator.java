@@ -35,6 +35,7 @@ public class SignUpValidator implements Validator{
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "NotEmpty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "country", "NotEmpty");
 
+
         if(!errors.hasFieldErrors("email") && !emailIsValid(signUpViewModel.getEmail())){
             errors.rejectValue("email", "signUpForm.invalidEmail");
         }
@@ -56,14 +57,14 @@ public class SignUpValidator implements Validator{
         }
         
         if(signUpViewModel.getDateOfBirth() != null && !hasMinimumAge(signUpViewModel.getDateOfBirth())){
-            errors.rejectValue("dateOfBirth", "signUpForm.mininumAge");
+            errors.rejectValue("dateOfBirth", "signUpForm.minimumAge");
         }
     }
 
     private boolean hasMinimumAge(LocalDate dateOfBirth) {
         LocalDate dateNow = LocalDate.now();
         Period age = Period.between(dateOfBirth, dateNow);
-        return age.getYears() >= 18;
+        return age.getYears() >= 16;
 
     }
     private boolean hasPasswordMinimumRequirements(String password) {
