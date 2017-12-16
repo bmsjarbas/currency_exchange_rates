@@ -46,7 +46,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
                http.authorizeRequests()
-                       .antMatchers("/resources/**", "/webjars/**","/static/**" ,"/signup", "/signup/confirmation")
+                       .antMatchers("/resources/**", "/webjars/**","/static/**" ,"/signup", "/signin")
                        .permitAll()
                        .anyRequest().authenticated()
                        .and()

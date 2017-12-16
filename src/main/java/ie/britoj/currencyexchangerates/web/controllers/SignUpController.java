@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/signup")
@@ -32,8 +33,8 @@ public class SignUpController {
     }
 
     @PostMapping
-    public String postSignUp(@ModelAttribute("signUp") SignUpViewModel signUp, BindingResult bindingResult
-    ){
+    public String postSignUp(@ModelAttribute("signUp") SignUpViewModel signUp,
+                             BindingResult bindingResult){
 
         signUpValidator.validate(signUp, bindingResult);
         if(bindingResult.hasErrors()){
@@ -41,12 +42,9 @@ public class SignUpController {
         }
 
         userManager.create(signUp.createUser());
-        return "redirect:/signup/confirmation";
+        return "redirect:/signin?userCreated";
 
     }
 
-    @GetMapping("/confirmation")
-    public String getConfirmation(){
-        return "signup-confirmation";
-    }
+
 }

@@ -64,7 +64,7 @@ public class SignUpControllerTest {
         MvcResult result = mockMvc.perform(post("/signup")
                 .flashAttr("signUp", signUpViewModel))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/signup/confirmation")).
+                .andExpect(redirectedUrl("/signin?userCreated")).
                         andReturn();
 
     }
