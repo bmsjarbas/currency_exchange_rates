@@ -8,6 +8,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 @Service
@@ -29,6 +31,14 @@ public class ExchangeRatesService implements CurrencyExchangeProvider{
     public Map<String, String> retrieveAllCurrencies() {
         String currencyResource = environment.getRequiredProperty("currency-list-api.endpoint");
         return restOperations.getForObject(currencyResource, Map.class);
+
+    }
+
+    @Override
+    public ExchangeRatesQueryResult retrieveHistoricalCurrencyExchangeRate(String currencyBase, LocalDate localDate) {
+        String formattedDate = localDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String latestExchangesURI = getExchangeRatesURI(formattedDate) + "?base="+currencyBase;
+        return restOperations.getForObject(latestExchangesURI, ExchangeRatesQueryResult.class);
 
     }
 

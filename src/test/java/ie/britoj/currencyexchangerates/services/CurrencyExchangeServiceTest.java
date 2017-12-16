@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +27,15 @@ public class CurrencyExchangeServiceTest {
     @Autowired
     ExchangeRatesService currencyExchangeService;
 
+
+    @Test
+    public void retrieveHistoricalCurrencyExchangeReturnAPositiveValue(){
+        ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService.retrieveHistoricalCurrencyExchangeRate("BRL", LocalDate.now().minusDays(1));
+        assertThat(currencyExchangeRate).isNotNull();
+        assertThat(currencyExchangeRate.getRates()).containsKey("USD");
+
+    }
+
     @Test
     public void retrieveActualCurrencyExchangeReturnAPositiveValue(){
         ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService.retrieveActualCurrencyExchangeRate("BRL");
@@ -39,5 +49,7 @@ public class CurrencyExchangeServiceTest {
         Map<String, String> currencies = this.currencyExchangeService.retrieveAllCurrencies();
         assertThat(currencies).containsKey("USD");
     }
+
+
 
 }
