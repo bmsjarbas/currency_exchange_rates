@@ -32,10 +32,12 @@ public class HomeController {
         Map<String, String> allCurrencies = currencyExchangeProvider.retrieveAllCurrencies();
 
         SearchViewModel searchViewModel = (SearchViewModel)redirectAttributes.getFlashAttributes().get("search");
+
         if(searchViewModel == null){
-            searchViewModel =  new SearchViewModel(allCurrencies);
+            searchViewModel =  new SearchViewModel();
         }
 
+        searchViewModel.setAllCurrencies(allCurrencies);
 
         ModelAndView modelAndView = new ModelAndView();
         return new ModelAndView("index", "search", searchViewModel);
@@ -47,15 +49,19 @@ public class HomeController {
         @ModelAttribute("search") SearchViewModel searchViewModel,
         BindingResult bindingResult, RedirectAttributes redirectAttributes){
         searchValidator.validate(searchViewModel, bindingResult);
+        searchViewModel.setAllCurrencies(currencyExchangeProvider.retrieveAllCurrencies());
+
+        if(bindingResult.hasErrors()){
+            return "index";
+        }
 
         ExchangeRatesQueryResult result = currencyExchangeProvider
                 .retrieveHistoricalCurrencyExchangeRate(searchViewModel.getCurrency(), searchViewModel.getDate());
 
         if(result.hasError()){
-            bindingResult.rejectValue("currency", result.getError());
+            bindingResult.rejectValue("currency", "searchForm.Api."+ result.getError().replace(" " ,""));
             return "index";
         }
-        redirectAttributes.addFlashAttribute("search", searchViewModel);
         return "redirect:/";
 
     }
