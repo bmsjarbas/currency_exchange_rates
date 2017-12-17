@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+<head th:include="layout :: header"></head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" th:include="layout :: fixed-navbar"></nav>
+
+<div class="container search">
+
+    <div class="row table table-result">
+        <div class="col">
+            <h5 class="currency-header">Query history</h5>
+            <ul class="list-group">
+                <li th:each="query : ${queries}" class="list-group-item">
+                    <span th:text="${query.baseCurrency}"></span>
+                    <span class="badge" th:text="${query.date}"></span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

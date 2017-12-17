@@ -1,6 +1,7 @@
 package ie.britoj.currencyexchangerates.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ public class QueryHistory {
     @OneToOne
     private User user;
     private String baseCurrency;
+    private LocalDate date;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="query_history_id")
@@ -45,4 +47,11 @@ public class QueryHistory {
         return rates;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }

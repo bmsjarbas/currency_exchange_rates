@@ -27,8 +27,9 @@ public class LogCurrencyExchangeResult {
     public void logQueryResult(ExchangeRatesQueryResult result) {
         QueryHistory queryHistory = new QueryHistory();
         queryHistory.setUser(getLoggedUser());
-        queryHistory.setBaseCurrency(result.getBase());
         if(!result.hasError()) {
+            queryHistory.setBaseCurrency(result.getBase());
+            queryHistory.setDate(result.getDate());
             result.getRates().forEach((currency, price) -> queryHistory.getRates().add(new Rate(currency, price)));
         }
         queryHistoryDAO.create(queryHistory);

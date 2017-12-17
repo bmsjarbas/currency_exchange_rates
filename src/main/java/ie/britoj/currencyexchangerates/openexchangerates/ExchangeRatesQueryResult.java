@@ -1,7 +1,12 @@
 package ie.britoj.currencyexchangerates.openexchangerates;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExchangeRatesQueryResult
@@ -10,7 +15,14 @@ public class ExchangeRatesQueryResult
     private boolean hasError;
     private String error;
     private String base;
+    @JsonFormat
+            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+
     private Map<String, Double> rates;
+    @JsonFormat
+            (shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+
+    private Date date;
 
 
     public Map<String, Double> getRates() {
@@ -44,4 +56,10 @@ public class ExchangeRatesQueryResult
     public void setHasError(boolean hasError) {
         this.hasError = hasError;
     }
+
+    public LocalDate getDate() {
+        return this.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+
 }
