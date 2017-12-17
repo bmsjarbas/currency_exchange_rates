@@ -44,7 +44,7 @@
             <div class="form-group">
                 <select th:errorclass="input-error" class="form-control form-control-lg" th:field="*{country}">
                     <option value="">Select Country</option>
-                    <option th:each="type : ${allCountries}"
+                    <option th:each="type : *{allCountries}"
                             th:value="${type}"
                             th:text="${type}">Wireframe</option>
                 </select>

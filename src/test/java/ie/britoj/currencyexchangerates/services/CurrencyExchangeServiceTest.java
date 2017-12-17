@@ -2,6 +2,7 @@ package ie.britoj.currencyexchangerates.services;
 
 import ie.britoj.currencyexchangerates.configurations.WebMvcConfiguration;
 import ie.britoj.currencyexchangerates.openexchangerates.ExchangeRatesQueryResult;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -25,7 +27,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CurrencyExchangeServiceTest {
 
     @Autowired
-    ExchangeRatesService currencyExchangeService;
+    CurrencyExchangeProvider currencyExchangeService;
+
+    Principal principal;
+
+    @Before
+    public void before() {
+        this.principal = new Principal() {
+            @Override
+            public String getName() {
+                return "test_user";
+            }
+
+        };
+    }
 
 
     @Test

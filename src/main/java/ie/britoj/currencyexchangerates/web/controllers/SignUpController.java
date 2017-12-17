@@ -46,16 +46,4 @@ public class SignUpController {
         return "redirect:/signin?userCreated";
 
     }
-
-    @ModelAttribute("allCountries")
-    public ArrayList<String> getCountriesList() {
-        String[] isoCountries = Locale.getISOCountries();
-        ArrayList<String> countriesList = new ArrayList<String>(isoCountries.length);
-        //countriesList.add("Select Country");
-        Arrays.stream(isoCountries)
-                .forEach(country ->
-                        countriesList.add(new Locale("en", country).getDisplayCountry()));
-        return countriesList;
-
-    }
 }

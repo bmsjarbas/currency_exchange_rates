@@ -2,7 +2,6 @@ package ie.britoj.currencyexchangerates.openexchangerates;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.HashMap;
 import java.util.Map;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExchangeRatesQueryResult
@@ -10,7 +9,7 @@ public class ExchangeRatesQueryResult
 
     private boolean hasError;
     private String error;
-    private String baseCurrency;
+    private String base;
     private Map<String, Double> rates;
 
 
@@ -22,12 +21,12 @@ public class ExchangeRatesQueryResult
         this.rates = rates;
     }
 
-    public String getBaseCurrency() {
-        return baseCurrency;
+    public String getBase() {
+        return base;
     }
 
-    public void setBaseCurrency(String baseCurrency) {
-        this.baseCurrency = baseCurrency;
+    public void setBase(String base) {
+        this.base = base;
     }
 
     public String getError() {
