@@ -30,7 +30,8 @@ public class CurrencyExchangeServiceTest {
 
     @Test
     public void retrieveHistoricalCurrencyExchangeReturnAPositiveValue(){
-        ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService.retrieveHistoricalCurrencyExchangeRate("BRL", LocalDate.now().minusDays(1));
+        ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService
+                .retrieveHistoricalCurrencyExchangeRate("BRL", LocalDate.now().minusDays(1));
         assertThat(currencyExchangeRate).isNotNull();
         assertThat(currencyExchangeRate.getRates()).containsKey("USD");
 
@@ -38,7 +39,8 @@ public class CurrencyExchangeServiceTest {
 
     @Test
     public void retrieveActualCurrencyExchangeReturnAPositiveValue(){
-        ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService.retrieveActualCurrencyExchangeRate("BRL");
+        ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService
+                .retrieveActualCurrencyExchangeRate("BRL");
         assertThat(currencyExchangeRate).isNotNull();
         assertThat(currencyExchangeRate.getRates()).containsKey("USD");
 
@@ -46,7 +48,8 @@ public class CurrencyExchangeServiceTest {
 
     @Test
     public void retrieveAllAvailableCurrencies(){
-        Map<String, String> currencies = this.currencyExchangeService.retrieveAllCurrencies();
+        Map<String, String> currencies = this.currencyExchangeService
+                .retrieveAllCurrencies();
         assertThat(currencies).containsKey("USD");
     }
 

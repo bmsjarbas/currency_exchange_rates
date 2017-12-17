@@ -22,10 +22,6 @@ public class ExchangeRatesService implements CurrencyExchangeProvider{
 
     @Autowired
     Environment environment;
-    public ExchangeRatesQueryResult retrieveActualCurrencyExchangeRate(String currencyBase){
-        String latestExchangesURI = getExchangeRatesURI("latest") + "?base="+currencyBase;
-        return restOperations.getForObject(latestExchangesURI, ExchangeRatesQueryResult.class);
-    }
 
     @Override
     public Map<String, String> retrieveAllCurrencies() {
@@ -45,5 +41,11 @@ public class ExchangeRatesService implements CurrencyExchangeProvider{
     private String getExchangeRatesURI(String resource){
         String apiEndpoint = this.environment.getRequiredProperty("currency-exchange-api.endpoint");
         return apiEndpoint + resource ;
+    }
+
+    /* This method is not being used at the moment. It has been implemented in order to have all external api supported methods */
+    public ExchangeRatesQueryResult retrieveActualCurrencyExchangeRate(String currencyBase){
+        String latestExchangesURI = getExchangeRatesURI("latest") + "?base="+currencyBase;
+        return restOperations.getForObject(latestExchangesURI, ExchangeRatesQueryResult.class);
     }
 }

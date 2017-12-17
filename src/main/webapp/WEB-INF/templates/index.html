@@ -2,5 +2,28 @@
 <head th:include="layout :: header"></head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" th:include="layout :: fixed-navbar"></nav>
+
+<div class="container search">
+
+
+    <div class="row">
+        <div class="col ">
+            <form th:action="@{/}" method="post" th:object="${search}" class="form-inline">
+                <select id="currency" th:field="*{currency}" th:errorclass="input-error" class="form-control form-control-lg">
+                    <option value="">Select Currency</option>
+                    <option th:each="curr : *{allCurrencies}"
+                            th:value="${curr.key}"
+                            th:text="${curr.key} + '-' + ${curr.value}">Wireframe</option>
+                </select>
+                <input th:field="*{date}" data-provide="datepicker" data-date-format="dd/mm/yyyy" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInputName2"
+                       placeholder="Date">
+
+                <button type="submit" class="btn btn-primary">Search</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>

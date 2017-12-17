@@ -46,7 +46,8 @@ public class AuthenticationServiceTest {
     public void loadUserByUsernameReturnValidUserTest(){
         org.springframework.security.core.userdetails.UserDetails springSecurityUser = this.authenticationService.
                 loadUserByUsername(user.getEmail());
-        assertThat(springSecurityUser.getUsername()).isEqualTo(user.getEmail());
+        assertThat(springSecurityUser.getUsername())
+                .isEqualTo(user.getEmail());
     }
 
 

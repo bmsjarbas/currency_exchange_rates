@@ -42,7 +42,7 @@
             </div>
 
             <div class="form-group">
-                <select th:errorclass="input-error" class="form-control" th:field="*{country}">
+                <select th:errorclass="input-error" class="form-control form-control-lg" th:field="*{country}">
                     <option value="">Select Country</option>
                     <option th:each="type : *{countriesList}"
                             th:value="${type}"

@@ -46,6 +46,7 @@ public class HomeControllerTest {
         MvcResult result = mockMvc.perform(get("/"))
                 .andExpect(status().isOk()).andReturn();
         ModelAndView modelAndView = result.getModelAndView();
-        assertThat(modelAndView.getViewName()).isEqualTo("index");
+        assertThat(modelAndView.getViewName())
+                .isEqualTo("index");
     }
 }
