@@ -1,5 +1,7 @@
 package ie.britoj.currencyexchangerates.web.viewmodels;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ public class SearchViewModel {
 
     private Map<String, String> allCurrencies;
     private String currency;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
 
     public SearchViewModel(){}

@@ -37,6 +37,16 @@ public class CurrencyExchangeServiceTest {
 
     }
 
+
+    @Test
+    public void retrieveHistoricalWithUnsupportedBaseCurrency(){
+        ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService
+                .retrieveHistoricalCurrencyExchangeRate("ABA", LocalDate.now().minusDays(1));
+        assertThat(currencyExchangeRate).isNotNull();
+        assertThat(currencyExchangeRate.hasError());
+
+    }
+
     @Test
     public void retrieveActualCurrencyExchangeReturnAPositiveValue(){
         ExchangeRatesQueryResult currencyExchangeRate = this.currencyExchangeService
