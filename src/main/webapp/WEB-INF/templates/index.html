@@ -22,9 +22,10 @@
 
                 <select th:field="*{currency}" th:errorclass="input-error" class="form-control form-control-lg">
                     <option value="">Select Currency</option>
-                    <option th:each="curr : *{allCurrencies}"
+                    <option th:each="curr : ${allCurrencies}"
                             th:value="${curr.key}"
-                            th:text="${curr.key} + '-' + ${curr.value}">Wireframe</option>
+                            th:text="${curr.key} + '-' + ${curr.value}">Wireframe
+                    </option>
                 </select>
 
                 <input th:field="*{date}" data-provide="datepicker" data-date-format="dd/mm/yyyy" type="text"
@@ -35,6 +36,20 @@
             </form>
         </div>
     </div>
+
+    <div class="row table table-result">
+        <div class="col">
+            <h5 class="currency-header"></h5>
+            <ul class="list-group">
+                <li th:each="rate : ${search.exchangeRates}" class="list-group-item">
+                    <span th:text="${rate.key}"></span>
+                    <span class="badge" th:text="${rate.value}">${rate.value}</span>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
 
 </div>
 </body>

@@ -5,10 +5,6 @@ import ie.britoj.currencyexchangerates.models.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Locale;
 
 public class SignUpViewModel {
     private String email;
@@ -20,8 +16,7 @@ public class SignUpViewModel {
     private String zipCode;
     private String city;
     private String country;
-    /*Just to keep it simple. At the moment we just have only one use for this thing */
-    private ArrayList<String> countriesList;
+
 
     public String getCountry() {
         return country;
@@ -88,14 +83,5 @@ public class SignUpViewModel {
         return new User(this.email, this.password, this.dateOfBirth, address);
     }
 
-    public ArrayList<String> getCountriesList() {
-        String[] isoCountries = Locale.getISOCountries();
-        countriesList = new ArrayList<String>(isoCountries.length);
-        //countriesList.add("Select Country");
-        Arrays.stream(isoCountries)
-                .forEach(country ->
-                        countriesList.add(new Locale("en", country).getDisplayCountry()));
-        return countriesList;
 
-    }
 }

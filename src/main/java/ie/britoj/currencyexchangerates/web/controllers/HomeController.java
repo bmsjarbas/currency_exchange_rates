@@ -4,12 +4,9 @@ import ie.britoj.currencyexchangerates.openexchangerates.ExchangeRatesQueryResul
 import ie.britoj.currencyexchangerates.services.CurrencyExchangeProvider;
 import ie.britoj.currencyexchangerates.web.validators.SearchValidator;
 import ie.britoj.currencyexchangerates.web.viewmodels.SearchViewModel;
-import ie.britoj.currencyexchangerates.web.viewmodels.SignInViewModel;
-import ie.britoj.currencyexchangerates.web.viewmodels.SignUpViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,19 +25,9 @@ public class HomeController {
     SearchValidator searchValidator;
 
     @GetMapping
-    public ModelAndView index(RedirectAttributes redirectAttributes){
-        Map<String, String> allCurrencies = currencyExchangeProvider.retrieveAllCurrencies();
-
-        SearchViewModel searchViewModel = (SearchViewModel)redirectAttributes.getFlashAttributes().get("search");
-
-        if(searchViewModel == null){
-            searchViewModel =  new SearchViewModel();
-        }
-
-        searchViewModel.setAllCurrencies(allCurrencies);
-
-        ModelAndView modelAndView = new ModelAndView();
-        return new ModelAndView("index", "search", searchViewModel);
+    public ModelAndView index(SearchViewModel searchViewModel){
+        ModelAndView modelAndView = new ModelAndView("index", "search", searchViewModel);
+        return modelAndView;
     }
 
 
@@ -49,7 +36,6 @@ public class HomeController {
         @ModelAttribute("search") SearchViewModel searchViewModel,
         BindingResult bindingResult, RedirectAttributes redirectAttributes){
         searchValidator.validate(searchViewModel, bindingResult);
-        searchViewModel.setAllCurrencies(currencyExchangeProvider.retrieveAllCurrencies());
 
         if(bindingResult.hasErrors()){
             return "index";
@@ -58,11 +44,21 @@ public class HomeController {
         ExchangeRatesQueryResult result = currencyExchangeProvider
                 .retrieveHistoricalCurrencyExchangeRate(searchViewModel.getCurrency(), searchViewModel.getDate());
 
+        searchViewModel.setExchangeRates(result.getRates());
+
         if(result.hasError()){
-            bindingResult.rejectValue("currency", "searchForm.Api."+ result.getError().replace(" " ,""));
-            return "index";
+            bindingResult.rejectValue("currency",
+                    "searchForm.Api."+ result.getError().replace(" " ,""));
+
         }
-        return "redirect:/";
+
+        return "index";
+
 
     }
+    @ModelAttribute("allCurrencies")
+    public Map<String, String> allCurrencies() {
+        return this.currencyExchangeProvider.retrieveAllCurrencies();
+    }
+
 }

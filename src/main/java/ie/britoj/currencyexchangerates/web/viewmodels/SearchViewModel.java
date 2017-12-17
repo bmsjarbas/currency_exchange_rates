@@ -7,16 +7,15 @@ import java.util.Map;
 
 public class SearchViewModel {
 
-    private Map<String, String> allCurrencies;
     private String currency;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate date;
 
+    private  Map<String, Double> exchangeRates;
+
     public SearchViewModel(){}
 
-    public SearchViewModel(Map<String, String> currencies){
-        this.allCurrencies = currencies;
-    }
+
     public String getCurrency() {
         return currency;
     }
@@ -33,11 +32,11 @@ public class SearchViewModel {
         this.date = date;
     }
 
-    public Map<String, String> getAllCurrencies() {
-        return allCurrencies;
+    public Map<String, Double> getExchangeRates() {
+        return exchangeRates;
     }
 
-    public void setAllCurrencies(Map<String, String> allCurrencies) {
-        this.allCurrencies = allCurrencies;
+    public void setExchangeRates(Map<String, Double> exchangeRates) {
+        this.exchangeRates = exchangeRates;
     }
 }

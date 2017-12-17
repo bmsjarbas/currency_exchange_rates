@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Locale;
+
 @Controller
 @RequestMapping("/signup")
 @Transactional
@@ -40,6 +44,18 @@ public class SignUpController {
 
         userManager.create(signUp.createUser());
         return "redirect:/signin?userCreated";
+
+    }
+
+    @ModelAttribute("allCountries")
+    public ArrayList<String> getCountriesList() {
+        String[] isoCountries = Locale.getISOCountries();
+        ArrayList<String> countriesList = new ArrayList<String>(isoCountries.length);
+        //countriesList.add("Select Country");
+        Arrays.stream(isoCountries)
+                .forEach(country ->
+                        countriesList.add(new Locale("en", country).getDisplayCountry()));
+        return countriesList;
 
     }
 }

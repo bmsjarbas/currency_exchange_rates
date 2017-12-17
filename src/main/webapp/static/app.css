@@ -52,5 +52,15 @@ body {
 }
 
 .search{
-    max-width: 650px !important;
+    max-width: 600px !important;
+    margin: 0 auto;
+    position: center;
+}
+
+
+.table-result{
+    max-width: 50%;
+    margin: 0 auto;
+    position: center;
+
 }
