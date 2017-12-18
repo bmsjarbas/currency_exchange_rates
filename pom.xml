@@ -138,7 +138,6 @@
           <scope>runtime</scope>
       </dependency>
 
-
       <!-- UI dependencies -->
       <dependency>
           <groupId>org.webjars</groupId>
@@ -193,6 +192,8 @@
               <version>${tomcat7-maven-plugin.version}</version>
               <configuration>
                   <path>/</path>
+                  <url>http://52.212.110.238:8080/manager/text</url>
+                  <server>aws-tomcat-server</server>
               </configuration>
           </plugin>
           <plugin>
